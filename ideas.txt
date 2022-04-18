@@ -1,0 +1,30 @@
+Coins: butifarras y/o yucas (mirar pixel art)
+Power ups: 
+	chontaduro: que el pj sea inmune a los obstáculos durante cierto tiempo
+	burra que patea hacia arriba: lanzamiento del pj cierta cantidad de metros
+	pescado: rebote automático en el agua del pj en caso de que caiga
+
+Tareas:
+1) Buscar assets para lo que se quiere en los coins y power ups
+2) Buscar como hacer el mar dinámico
+3) Buscar el fondo (playa/atardecer) y los costados
+4) Buscar asset para el pj
+5) Sonidos para el juego
+
+Sonidos para el juego:
+Para el fondo vallenato de puya
+Para los power ups:
+Con el chontaduro "joa mani"
+Con la burrita "eche"
+Con el pescado "ajá"
+nota: durante el efecto del chontaduro reproducir el sonido de naruto shippuden en (x1.5) https://www.youtube.com/watch?v=lf-VYTnvvYQ
+
+Para cuando el personaje pierda, reproducir la intro de sin medir distancias https://www.youtube.com/watch?v=lAITJiV8xbQ
+
+Obstáculos:
+Emulando el dragón de cat jump, reemplazar el fuego por troncos que se cierran y encuentran en la mitad.
+En vez de las cositas con chuzitos, hacer gaviotas estáticas verticalmente pero con movimiento horizontal.
+Pinchos en los laterales.
+
+Movimiento:
+Imitar la dinámica del cat jump
