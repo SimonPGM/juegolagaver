@@ -28,15 +28,17 @@ public class PlayerScript : MonoBehaviour
         }
         
         _playerRigidBody.velocity = new Vector2(_moveSpeed, _playerRigidBody.velocity.y);
+
+        Debug.Log(touchingFloor);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         touchingFloor = true;
-        if (col.CompareTag("Obstacle"))
+        /*if (col.CompareTag("Obstacle"))
         {
             GameObject.Destroy(this.gameObject);
-        }
+        }*/
     }
 
     private void OnTriggerExit2D(Collider2D other)
