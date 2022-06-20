@@ -354,7 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 109217701}
   _BlockPreFab:
-  - {fileID: 4779823510423273125, guid: 3ae48538cd2659541b281bc22a6ca4fe, type: 3}
+  - {fileID: 4779823510423273125, guid: 81992fbc76217c4488559d78d47a9963, type: 3}
   - {fileID: 4779823510423273125, guid: 1a6db7818cd8ddc458220567d1615acf, type: 3}
   - {fileID: 4779823510423273125, guid: 99c4e56676da38543a50620f37812dab, type: 3}
   _playerPointer: 0

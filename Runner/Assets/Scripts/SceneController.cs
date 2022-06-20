@@ -17,7 +17,7 @@ public class SceneController : MonoBehaviour
         _playerPointer = -7;
     }
 
-    // Update is called once per frame
+    private Coroutine _test;
     void Update()
     {
         if (player != null)
@@ -26,18 +26,31 @@ public class SceneController : MonoBehaviour
                  this.transform.position.y,
                  this.transform.position.z);
         }
-        Debug.Log("While");/*
+        Debug.Log("While");
+
+        if (_test != null)
+        {
+            StopCoroutine(_test);
+        }
+        _test = StartCoroutine(EndlessRunner());
+
+    }
+
+    IEnumerator EndlessRunner()
+    {
         while (player != null && _playerPointer < player.transform.position.x + _safePlaceGenerator)
         {
-            int indexBlock = Random.Range(0,_BlockPreFab.Length-1);
+            int indexBlock = Random.Range(0, _BlockPreFab.Length - 1);
             if (_playerPointer < 0)
             {
                 indexBlock = 0;
             }
-            //GameObject ObjectBlock = Instantiate(_BlockPreFab[indexBlock]);
-            //ObjectBlock.transform.SetParent(this.transform);
-            //Bloque block = ObjectBlock.GetComponent<Bloque>();
-            //ObjectBlock.transform.position = new Vector2(_playerPointer+block._size/2,0);
-        }*/
+            GameObject ObjectBlock = Instantiate(_BlockPreFab[indexBlock]);
+            ObjectBlock.transform.SetParent(this.transform);
+            Bloque block = ObjectBlock.GetComponent<Bloque>();
+            ObjectBlock.transform.position = new Vector2(_playerPointer + block._size / 2, 0);
+
+            yield return null;
+        }
     }
 }
