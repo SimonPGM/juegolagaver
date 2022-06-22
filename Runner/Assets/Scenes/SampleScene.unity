@@ -358,7 +358,7 @@ MonoBehaviour:
   - {fileID: 4779823510423273125, guid: 1a6db7818cd8ddc458220567d1615acf, type: 3}
   - {fileID: 4779823510423273125, guid: 99c4e56676da38543a50620f37812dab, type: 3}
   _playerPointer: 0
-  _safePlaceGenerator: 12
+  _safePlaceGenerator: 25
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

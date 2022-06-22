@@ -23,7 +23,6 @@ public class PlayerScript : MonoBehaviour
         _playerRigidBody = GetComponent<Rigidbody2D>();
         if (Input.GetKeyDown("space") && touchingFloor)
         {
-            Debug.Log("Inside the if");
             _playerRigidBody.AddForce(new Vector2(0, _jumpForce));
         }
         
@@ -32,7 +31,7 @@ public class PlayerScript : MonoBehaviour
         Debug.Log(touchingFloor);
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
         touchingFloor = true;
         /*if (col.CompareTag("Obstacle"))
