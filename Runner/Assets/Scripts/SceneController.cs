@@ -8,13 +8,13 @@ public class SceneController : MonoBehaviour
     private GameObject player;
     public GameObject[] _BlockPreFab;
     public float _playerPointer;
-    public float _safePlaceGenerator = 12;
+    public float _safePlaceGenerator = 18;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        _playerPointer = -7;
+        _playerPointer = -12;
     }
 
     private Coroutine _test;
@@ -26,17 +26,6 @@ public class SceneController : MonoBehaviour
                  this.transform.position.y,
                  this.transform.position.z);
         }
-
-        if (_test != null)
-        {
-            StopCoroutine(_test);
-        }
-        _test = StartCoroutine(EndlessRunner());
-
-    }
-
-    IEnumerator EndlessRunner()
-    {
         while (player != null && _playerPointer < player.transform.position.x + _safePlaceGenerator)
         {
             int indexBlock = Random.Range(0, _BlockPreFab.Length - 1);
@@ -50,7 +39,19 @@ public class SceneController : MonoBehaviour
             ObjectBlock.transform.position = new Vector2(_playerPointer + block._size / 2, 0);
             _playerPointer += block._size;
 
-            yield return null;
+            //yield return null;
         }
+        /*
+        if (_test != null)
+        {
+            StopCoroutine(_test);
+        }
+        _test = StartCoroutine(EndlessRunner());
+        */
     }
+    /*
+    IEnumerator EndlessRunner()
+    {
+        
+    }*/
 }
