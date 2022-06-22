@@ -26,7 +26,6 @@ public class SceneController : MonoBehaviour
                  this.transform.position.y,
                  this.transform.position.z);
         }
-        Debug.Log("While");
 
         if (_test != null)
         {
@@ -49,6 +48,7 @@ public class SceneController : MonoBehaviour
             ObjectBlock.transform.SetParent(this.transform);
             Bloque block = ObjectBlock.GetComponent<Bloque>();
             ObjectBlock.transform.position = new Vector2(_playerPointer + block._size / 2, 0);
+            _playerPointer += block._size;
 
             yield return null;
         }
