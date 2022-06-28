@@ -12,6 +12,15 @@ public class PlayerScript : MonoBehaviour
 
     private bool touchingFloor = false;
     private Rigidbody2D _playerRigidBody; 
+
+    private float jumptimecounter;
+    [SerializeField]
+    private float jumptime;
+    private bool isjumping;
+
+    [SerializeField]
+    private Animator animations; 
+
     void Start()
     {
         
@@ -23,7 +32,32 @@ public class PlayerScript : MonoBehaviour
         _playerRigidBody = GetComponent<Rigidbody2D>();
         if (Input.GetKeyDown("space") && touchingFloor)
         {
+
+            isjumping = true;
+            jumptimecounter = jumptime;
             _playerRigidBody.AddForce(new Vector2(0, _jumpForce));
+            animations.Play("JumpPJ");
+        }
+
+        if (Input.GetKey("space") && isjumping){
+
+
+            if (jumptimecounter > 0){
+                _playerRigidBody.velocity = Vector2.up * _jumpForce;
+                jumptimecounter -= Time.deltaTime;
+            }
+            else {
+                isjumping = false;
+                animations.Play("FallPJ");
+
+            }
+
+        }
+
+        if (Input.GetKeyUp("space")){
+            isjumping = false;
+            animations.Play("FallPJ");
+
         }
         
         _playerRigidBody.velocity = new Vector2(_moveSpeed, _playerRigidBody.velocity.y);
@@ -31,8 +65,15 @@ public class PlayerScript : MonoBehaviour
         Debug.Log(touchingFloor);
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+
+        // Aqui iria la programación de la moneda cuando el personaje la toque.
+        
+    }
+
     private void OnTriggerStay2D(Collider2D col)
     {
+        animations.Play("RunPJ");
         touchingFloor = true;
         /*if (col.CompareTag("Obstacle"))
         {

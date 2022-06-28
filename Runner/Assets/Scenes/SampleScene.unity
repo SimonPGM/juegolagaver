@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 109217704}
   - component: {fileID: 109217703}
   - component: {fileID: 109217702}
+  - component: {fileID: 109217707}
   m_Layer: 0
   m_Name: Jugador
   m_TagString: Untagged
@@ -155,8 +156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b99bd608456a04c940c41c86f6a3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 200
-  _moveSpeed: 3
+  _jumpForce: 5
+  _moveSpeed: 5
+  jumptime: 0.6
+  animations: {fileID: 109217707}
 --- !u!50 &109217703
 Rigidbody2D:
   serializedVersion: 4
@@ -269,6 +272,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &109217707
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109217701}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dfea70df46f5f5f46b8c3f7b134fd5e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &229412451
 GameObject:
   m_ObjectHideFlags: 0
