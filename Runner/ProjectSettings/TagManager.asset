@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
+  - Aerial
+  - Terrestrial
+  - Static
   layers:
   - Default
   - TransparentFX

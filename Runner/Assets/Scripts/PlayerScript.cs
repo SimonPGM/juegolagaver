@@ -62,7 +62,7 @@ public class PlayerScript : MonoBehaviour
         
         _playerRigidBody.velocity = new Vector2(_moveSpeed, _playerRigidBody.velocity.y);
 
-        Debug.Log(touchingFloor);
+        //Debug.Log(touchingFloor);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

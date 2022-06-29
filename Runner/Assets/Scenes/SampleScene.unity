@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -505,6 +506,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abf43230b9f45e47b2544cfb8af65b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesList:
+  - {fileID: 3179294627138769685, guid: e79c4aa150367ae44861e228a423aee6, type: 3}
+  - {fileID: 3471603592851074968, guid: 58ff2b0ad6a3ff8418069a3243e39657, type: 3}
+  - {fileID: 2697228870856740394, guid: 7cd4e5536a43c5f48beb349a41f3138c, type: 3}
+  - {fileID: 8536161954832797420, guid: 21990b89a21699045a6a33700c631313, type: 3}
+  - {fileID: 6895405152312774209, guid: 985eafcf15c0c6d46940c1d78d7e012e, type: 3}
+  - {fileID: 7616324710023437858, guid: 7bfda44998c351143bf673f0ae552601, type: 3}
+  respawnTime: 3
 --- !u!1 &570107378
 GameObject:
   m_ObjectHideFlags: 0
