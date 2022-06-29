@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3471603592851074973}
   - component: {fileID: 3471603592851074974}
   - component: {fileID: 3471603592851074975}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: KingEagle
   m_TagString: Aerial
   m_Icon: {fileID: 0}
