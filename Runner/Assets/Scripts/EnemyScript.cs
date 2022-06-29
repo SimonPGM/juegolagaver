@@ -29,13 +29,12 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    /*private void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         if (!col.gameObject.CompareTag("Floor"))
         {
             Destroy(col.gameObject);
             if(this.gameObject != null) Destroy(this.gameObject);
         }
-        
-    }*/
+    }
 }
