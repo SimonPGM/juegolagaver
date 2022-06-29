@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -951,7 +951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2577,6 +2577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ebdf59c9889d414ea8b08e8b923d292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameScene: 
 --- !u!1 &1469031916
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,7 +3340,7 @@ GameObject:
   - component: {fileID: 1864548382}
   - component: {fileID: 1864548381}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainMenuCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3482,6 +3483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ebdf59c9889d414ea8b08e8b923d292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameScene: SampleScene
 --- !u!1 &1945471649
 GameObject:
   m_ObjectHideFlags: 0
