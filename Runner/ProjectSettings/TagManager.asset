@@ -8,6 +8,7 @@ TagManager:
   - Aerial
   - Terrestrial
   - Static
+  - Coin1
   layers:
   - Default
   - TransparentFX
