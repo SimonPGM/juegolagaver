@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 109217703}
   - component: {fileID: 109217702}
   - component: {fileID: 109217707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Jugador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,14 +198,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.1575, y: 2.3675}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.1, y: 2.3}
   m_EdgeRadius: 0
 --- !u!212 &109217705
 SpriteRenderer:
@@ -247,7 +247,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 2cb3db6e9cc1cf141ba32679fc28f90d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 39d1daf690a7f474787d86fcdb0e5d71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -505,6 +506,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abf43230b9f45e47b2544cfb8af65b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesList:
+  - {fileID: 3179294627138769685, guid: e79c4aa150367ae44861e228a423aee6, type: 3}
+  - {fileID: 3471603592851074968, guid: 58ff2b0ad6a3ff8418069a3243e39657, type: 3}
+  - {fileID: 2697228870856740394, guid: 7cd4e5536a43c5f48beb349a41f3138c, type: 3}
+  - {fileID: 8536161954832797420, guid: 21990b89a21699045a6a33700c631313, type: 3}
+  - {fileID: 6895405152312774209, guid: 985eafcf15c0c6d46940c1d78d7e012e, type: 3}
+  - {fileID: 7616324710023437858, guid: 7bfda44998c351143bf673f0ae552601, type: 3}
+  respawnTime: 3
 --- !u!1 &570107378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,7 +1494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.34666666}
   m_AnchorMax: {x: 0.5, y: 0.34666666}
-  m_AnchoredPosition: {x: -0.0000047684, y: 0.099998474}
+  m_AnchoredPosition: {x: -0.0000047684, y: 0.1000061}
   m_SizeDelta: {x: 184.12, y: 30.9226}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1803630333

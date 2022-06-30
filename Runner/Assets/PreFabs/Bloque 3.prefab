@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 7178412645963741609}
   m_Layer: 0
   m_Name: Suelo
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2471,7 +2471,7 @@ GameObject:
   - component: {fileID: 4779823509329483091}
   m_Layer: 0
   m_Name: Piso
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2687,7 +2687,7 @@ GameObject:
   - component: {fileID: 3463450709160148351}
   m_Layer: 0
   m_Name: Bloque 3
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
