@@ -8,7 +8,6 @@ public class CoinScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.CompareTag("Player")){
             ScoreManager.instance.ChangeScore(coinValue);
-            Debug.Log("Hola");
         }
     }
     // Start is called before the first frame update
