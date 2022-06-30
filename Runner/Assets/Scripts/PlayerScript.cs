@@ -67,6 +67,11 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
 
+        if (other.gameObject.CompareTag("Coin1"))
+        {
+            Destroy(other.gameObject);
+        }
+
         // Aqui iria la programación de la moneda cuando el personaje la toque.
         
     }
