@@ -21,9 +21,14 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     private Animator animations; 
 
+    private bool _isInvincible = false;
+    private Renderer rend;
+    private Color c;
+
     void Start()
     {
-        
+        rend = GetComponent<Renderer>();
+        c = rend.material.color;
     }
 
     // Update is called once per frame
@@ -67,6 +72,20 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
 
+        if (other.gameObject.CompareTag("Coin1"))
+        {
+            Destroy(other.gameObject);
+        }
+
+        if(other.gameObject.CompareTag("PowerUp1")){
+            Destroy(other.gameObject);
+            if (!_isInvincible){
+                _isInvincible = true;
+                StartCoroutine("Invulnerable");
+            }
+
+        }
+
         // Aqui iria la programación de la moneda cuando el personaje la toque.
         
     }
@@ -84,5 +103,23 @@ public class PlayerScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         touchingFloor = false;
+    }
+
+    
+
+    IEnumerator Invulnerable(){
+        Physics2D.IgnoreLayerCollision(3,6,true);
+        Debug.Log("Invencible");
+        c.a = 0.5f;
+        rend.material.color = c;
+        _moveSpeed = 10;
+        yield return new WaitForSeconds(10f);
+        c.a = 1f;
+        rend.material.color = c;
+        _moveSpeed = 6;
+        Physics2D.IgnoreLayerCollision(3,6,false);
+        Debug.Log("No Invencible");
+        _isInvincible = false;  
+
     }
 }
