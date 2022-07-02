@@ -25,6 +25,8 @@ Se utilizaron los siguientes assets extra:
 * [Cartoon Eagle 2D](https://assetstore.unity.com/packages/2d/characters/cartoon-eagle-2d-196612)
 * [2D Pixel Art Crab Sprites](https://elthen.itch.io/2d-pixel-art-crab-sprites)
 * [ISLAND BOY CHARACTER – FREE SPRITE](https://craftpix.net/freebies/island-boy-character-free-sprite/)
+* [Pixel Art Environment/Platformer Pack
+](https://assetstore.unity.com/packages/2d/pixel-art-environment-platformer-pack-195739#reviews)
 
 # Checa nuestro juego
 
