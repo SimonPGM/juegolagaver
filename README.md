@@ -27,6 +27,7 @@ Se utilizaron los siguientes assets extra:
 * [ISLAND BOY CHARACTER – FREE SPRITE](https://craftpix.net/freebies/island-boy-character-free-sprite/)
 * [Pixel Art Environment/Platformer Pack
 ](https://assetstore.unity.com/packages/2d/pixel-art-environment-platformer-pack-195739#reviews)
+* [JSON .NET For Unity]([https://assetstore.unity.com/packages/2d/pixel-art-environment-platformer-pack-195739#reviews](https://assetstore.unity.com/packages/tools/input-management/json-net-for-unity-11347))
 
 # Checa nuestro juego
 
