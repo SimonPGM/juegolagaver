@@ -28,7 +28,7 @@ Se utilizaron los siguientes assets extra:
 
 # Checa nuestro juego
 
-[](Demo.gif)
+![](Demo.gif)
 
 # Diccionario de las ramas
 * **main**: rama principal que solo es usada como historia oficial del proyecto.
