@@ -27,7 +27,10 @@ public class PlayerScript : MonoBehaviour
     private Color c;
     private int score;
     private int life;
-    
+
+    [SerializeField]
+    private GameObject _audioSource;
+
     /*[SerializeField]
     private TextAsset jsonFile;
     
@@ -138,6 +141,7 @@ public class PlayerScript : MonoBehaviour
         if(other.gameObject.CompareTag("PowerUp2")){
             Destroy(other.gameObject);
             life += 1;
+            Instantiate(_ehda);
         }
         
     }
@@ -190,9 +194,11 @@ public class PlayerScript : MonoBehaviour
     IEnumerator DelayedDeath()
     {
         //Debug.Log("Hero is dying");//Launch the animation and stuffs
+        _audioSource.GetComponent<AudioSource>().Stop();
+        Instantiate(_death);
         animations.SetBool("isDead", true);
         animations.Play("DeathPJ");
-        yield return new WaitForSeconds(2f);//Delay for 5 seconds
+        yield return new WaitForSeconds(7f);//Delay for 5 seconds
         Destroy(this.gameObject);
         SceneManager.LoadScene("Menu");
         //Debug.Log("Hero is dead");//ProcessPlayerDeath

@@ -2252,14 +2252,14 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: b4b0042171323e3449b570e6379de6d3, type: 3}
     isLoop: 0
     playOnAwake: 0
-    volume: 0
+    volume: 1
   - audioType: 0
     source: {fileID: 0}
     clipName: 
     audioClip: {fileID: 8300000, guid: e04c3996a5bab6d4f864961c89c07325, type: 3}
     isLoop: 0
     playOnAwake: 0
-    volume: 0
+    volume: 0.164
   - audioType: 0
     source: {fileID: 0}
     clipName: 
