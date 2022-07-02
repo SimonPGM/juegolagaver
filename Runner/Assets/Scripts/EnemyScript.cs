@@ -10,7 +10,7 @@ public class EnemyScript : MonoBehaviour
     
     private float _horizontalExtent;
     private float _minxCamera;
-
+    
     void Start()
     {
         _speed = this.CompareTag("Static") ? 0 : 2;
@@ -29,12 +29,17 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    /*private void OnCollisionEnter2D(Collision2D col)
     {
-        if (!col.gameObject.CompareTag("Floor"))
+        if (!col.gameObject.CompareTag("Floor") && !col.gameObject.CompareTag("Player"))
         {
             Destroy(col.gameObject);
             if(this.gameObject != null) Destroy(this.gameObject);
+            if ()
+            {
+                SceneManager.LoadScene("Menu");
+            }
         }
-    }
+        
+    }*/
 }

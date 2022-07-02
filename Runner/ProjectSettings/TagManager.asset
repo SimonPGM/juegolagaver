@@ -9,6 +9,9 @@ TagManager:
   - Terrestrial
   - Static
   - Coin1
+  - PowerUp1
+  - Coin2
+  - PowerUp2
   layers:
   - Default
   - TransparentFX
