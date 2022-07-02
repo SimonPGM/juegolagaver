@@ -37,8 +37,8 @@ public class PlayerScript : MonoBehaviour
     private GameObject _audioSource;
     private AudioSource _audioMain;
 
-    [SerializeField]
-    private TextAsset jsonFile;
+    //[SerializeField]
+    private StreamReader jsonFile;
     [SerializeField]
     private TMP_InputField _namePlayer;
 
@@ -72,8 +72,10 @@ public class PlayerScript : MonoBehaviour
     {
         currentPlayer.name = "";
         currentPlayer.score = 0;
-        JObject jo = JObject.Parse(jsonFile.text);
+        jsonFile = new StreamReader(Application.persistentDataPath + "/Scores.json"); 
+        JObject jo = JObject.Parse(jsonFile.ReadToEnd());
         players = jo["Players"].ToObject<List<Player>>();
+        jsonFile.Close();
     }
 
     void Start()
@@ -195,9 +197,9 @@ public class PlayerScript : MonoBehaviour
         string jsonString = JsonConvert.SerializeObject(players);
         jsonString = "{ \"Players\":" + jsonString + "}";
         //Debug.Log(jsonString);
-        string path = Directory.GetCurrentDirectory() + "/Assets/Scores.json";
-        Debug.Log("entra if");
-        File.WriteAllText(@path, jsonString);
+        //string path = Directory.GetCurrentDirectory() + "/Assets/Scores.json";
+        Debug.Log(Application.persistentDataPath);
+        File.WriteAllText(Application.persistentDataPath+"/Scores.json", jsonString);
         Destroy(this.gameObject);
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1f;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Newtonsoft.Json.Linq;
 using TMPro;
 using Unity.Mathematics;
@@ -15,8 +16,8 @@ public class ScoresMenu : MonoBehaviour
     [SerializeField]
     private TMP_Text[] scores;
     
-    [SerializeField]
-    private TextAsset jsonFile;
+    //[SerializeField]
+    private StreamReader jsonFile;
     
     
     public class  Player: IComparable
@@ -35,8 +36,10 @@ public class ScoresMenu : MonoBehaviour
     private JObject jo;
     private void Awake()
     {
-        jo = JObject.Parse(jsonFile.text);
+        jsonFile = new StreamReader(Application.persistentDataPath + "/Scores.json");
+        JObject jo = JObject.Parse(jsonFile.ReadToEnd());
         players = jo["Players"].ToObject<List<Player>>();
+        jsonFile.Close();
         players.Sort();
     }
 
@@ -76,8 +79,10 @@ public class ScoresMenu : MonoBehaviour
 
     public void updateJsonRead()
     {
-        jo = JObject.Parse(jsonFile.text);
+        jsonFile = new StreamReader(Application.persistentDataPath + "/Scores.json");
+        JObject jo = JObject.Parse(jsonFile.ReadToEnd());
         players = jo["Players"].ToObject<List<Player>>();
+        jsonFile.Close();
         players.Sort();
     }
 }
