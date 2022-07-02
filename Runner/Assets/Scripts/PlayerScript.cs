@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour
     private bool isjumping;
 
     [SerializeField]
-    private Animator animations; 
+    private Animator animations;
 
     private bool _isInvincible = false;
     private Renderer rend;
@@ -60,6 +60,7 @@ public class PlayerScript : MonoBehaviour
         c = rend.material.color;
         score = 0;
         life = 1;
+        animations.SetBool("isDead", false);
     }
 
     // Update is called once per frame
@@ -132,7 +133,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        animations.Play("RunPJ");
+        if (life > 0) animations.Play("RunPJ");
         touchingFloor = true;
         /*if (col.CompareTag("Obstacle"))
         {
@@ -151,7 +152,11 @@ public class PlayerScript : MonoBehaviour
         {
             life -= 1;
             Destroy(col.gameObject);
-            if (life == 0) Destroy(this.gameObject);
+            if (life == 0)
+            {
+                _moveSpeed = 0f;
+                StartCoroutine("DelayedDeath");
+            }
             //Debug.Log(JsonUtility.ToJson(currentPlayer));
         }
     }
@@ -170,4 +175,17 @@ public class PlayerScript : MonoBehaviour
         //Debug.Log("No Invencible");
         _isInvincible = false;
     }
+    
+    IEnumerator DelayedDeath()
+    {
+        //Debug.Log("Hero is dying");//Launch the animation and stuffs
+        animations.SetBool("isDead", true);
+        animations.Play("DeathPJ");
+        yield return new WaitForSeconds(2f);//Delay for 5 seconds
+        Destroy(this.gameObject);
+        SceneManager.LoadScene("Menu");
+        //Debug.Log("Hero is dead");//ProcessPlayerDeath
+ 
+    }
+    
 }
