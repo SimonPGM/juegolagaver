@@ -20,14 +20,17 @@ public class PlayerScript : MonoBehaviour
     private bool isjumping;
 
     [SerializeField]
-    private Animator animations; 
+    private Animator animations;
 
     private bool _isInvincible = false;
     private Renderer rend;
     private Color c;
     private int score;
     private int life;
-    
+
+    [SerializeField]
+    private GameObject _audioSource;
+
     /*[SerializeField]
     private TextAsset jsonFile;
     
@@ -54,12 +57,22 @@ public class PlayerScript : MonoBehaviour
         currentPlayer.score = 0;
     }*/
 
+    [SerializeField]
+    private GameObject _chontaduro;
+    [SerializeField]
+    private GameObject _ehda;
+    [SerializeField]
+    private GameObject _eche;
+    [SerializeField]
+    private GameObject _death;
+
     void Start()
     {
         rend = GetComponent<Renderer>();
         c = rend.material.color;
         score = 0;
         life = 1;
+        animations.SetBool("isDead", false);
     }
 
     // Update is called once per frame
@@ -118,6 +131,8 @@ public class PlayerScript : MonoBehaviour
         if(other.gameObject.CompareTag("PowerUp1")){
             Destroy(other.gameObject);
             if (!_isInvincible){
+                Instantiate(_eche);
+                Instantiate(_chontaduro);
                 _isInvincible = true;
                 StartCoroutine("Invulnerable");
             }
@@ -126,13 +141,14 @@ public class PlayerScript : MonoBehaviour
         if(other.gameObject.CompareTag("PowerUp2")){
             Destroy(other.gameObject);
             life += 1;
+            Instantiate(_ehda);
         }
         
     }
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        animations.Play("RunPJ");
+        if (life > 0) animations.Play("RunPJ");
         touchingFloor = true;
         /*if (col.CompareTag("Obstacle"))
         {
@@ -151,7 +167,11 @@ public class PlayerScript : MonoBehaviour
         {
             life -= 1;
             Destroy(col.gameObject);
-            if (life == 0) Destroy(this.gameObject);
+            if (life == 0)
+            {
+                _moveSpeed = 0f;
+                StartCoroutine("DelayedDeath");
+            }
             //Debug.Log(JsonUtility.ToJson(currentPlayer));
         }
     }
@@ -170,4 +190,19 @@ public class PlayerScript : MonoBehaviour
         //Debug.Log("No Invencible");
         _isInvincible = false;
     }
+    
+    IEnumerator DelayedDeath()
+    {
+        //Debug.Log("Hero is dying");//Launch the animation and stuffs
+        _audioSource.GetComponent<AudioSource>().Stop();
+        Instantiate(_death);
+        animations.SetBool("isDead", true);
+        animations.Play("DeathPJ");
+        yield return new WaitForSeconds(7f);//Delay for 5 seconds
+        Destroy(this.gameObject);
+        SceneManager.LoadScene("Menu");
+        //Debug.Log("Hero is dead");//ProcessPlayerDeath
+ 
+    }
+    
 }
