@@ -54,22 +54,7 @@ public class PlayerScript : MonoBehaviour
             return this.score.CompareTo(otherPlayer.score);
         }
     }
-
-    public Player currentPlayer = new Player();
-    List<Player> players = new List<Player>();
-
-
-
-    private void Awake()
-    {
-        currentPlayer.name = "";
-        currentPlayer.score = 0;
-        JObject jo = JObject.Parse(jsonFile.text);
-        players = jo["Players"].ToObject<List<Player>>();
-    }
-
-
-
+    
     [SerializeField]
     private GameObject _chontaduro;
     [SerializeField]
@@ -78,7 +63,19 @@ public class PlayerScript : MonoBehaviour
     private GameObject _eche;
     [SerializeField]
     private GameObject _death;
-    private bool finish;
+
+    public Player currentPlayer = new Player();
+    List<Player> players = new List<Player>();
+
+    
+    private void Awake()
+    {
+        currentPlayer.name = "";
+        currentPlayer.score = 0;
+        JObject jo = JObject.Parse(jsonFile.text);
+        players = jo["Players"].ToObject<List<Player>>();
+    }
+
     void Start()
     {
         rend = GetComponent<Renderer>();
@@ -88,7 +85,6 @@ public class PlayerScript : MonoBehaviour
         animations.SetBool("isDead", false);
         _audioMain = _audioSource.GetComponent<AudioSource>();
         _namePlayer.gameObject.SetActive(false);
-        finish = false;
     }
 
     // Update is called once per frame
@@ -125,24 +121,6 @@ public class PlayerScript : MonoBehaviour
         }
         
         _playerRigidBody.velocity = new Vector2(_moveSpeed, _playerRigidBody.velocity.y);
-
-        if (finish)
-        {
-            Debug.Log(_namePlayer.text);
-            if (_namePlayer.text != "" && Input.GetKeyDown(KeyCode.Return))
-            {
-                currentPlayer.name = _namePlayer.text;
-                players.Add(currentPlayer);
-                string jsonString = JsonConvert.SerializeObject(players);
-                jsonString = "{ \"Players\":" + jsonString + "}";
-                //Debug.Log(jsonString);
-                string path = Directory.GetCurrentDirectory();
-                Debug.Log("entra if");
-                File.WriteAllText(path + "/Assets/Scores.json", jsonString);
-                SceneManager.LoadScene("Menu");
-            }
-        }
-
         //Debug.Log("The class one zuckas: " + currentPlayer.score);
     }
 
@@ -210,6 +188,21 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void SettingPlayerName(string s)
+    {
+        currentPlayer.name = s;
+        players.Add(currentPlayer);
+        string jsonString = JsonConvert.SerializeObject(players);
+        jsonString = "{ \"Players\":" + jsonString + "}";
+        //Debug.Log(jsonString);
+        string path = Directory.GetCurrentDirectory() + "/Assets/Scores.json";
+        Debug.Log("entra if");
+        File.WriteAllText(@path, jsonString);
+        Destroy(this.gameObject);
+        SceneManager.LoadScene("Menu");
+        Time.timeScale = 1f;
+    }
+
     IEnumerator Invulnerable(){
         Physics2D.IgnoreLayerCollision(3,6,true);
         //Debug.Log("Invencible");
@@ -235,12 +228,9 @@ public class PlayerScript : MonoBehaviour
         animations.SetBool("isDead", true);
         animations.Play("DeathPJ");
         yield return new WaitForSeconds(7f);//Delay for 5 seconds
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
         _namePlayer.gameObject.SetActive(true);
-        finish = true;
-        
-        //Debug.Log("Hero is dead");//ProcessPlayerDeath
-
+        Time.timeScale = 0f;
     }
     
 }
