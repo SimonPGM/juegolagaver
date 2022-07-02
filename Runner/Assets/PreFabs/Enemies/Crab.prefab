@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2697228870856740395}
   - component: {fileID: 2697228870856740398}
   - component: {fileID: 2697228870856740399}
-  - component: {fileID: 2697228870856740396}
+  - component: {fileID: -8135407002486167534}
   m_Layer: 3
   m_Name: Crab
   m_TagString: Terrestrial
@@ -152,7 +152,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.17, y: 0.07}
   m_EdgeRadius: 0
---- !u!114 &2697228870856740396
+--- !u!114 &-8135407002486167534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,3 +164,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149bb3c3c9b7cab48a79fa5b61385c0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 4732669165515411079, guid: 61db8020d9883964c9cb6fcbba72cbe1, type: 3}

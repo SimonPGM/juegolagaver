@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoinScript : MonoBehaviour
 {
-    public int coinValue = 1;
+    public int coinValue;
     private void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.CompareTag("Player")){
             ScoreManager.instance.ChangeScore(coinValue);

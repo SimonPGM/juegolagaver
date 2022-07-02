@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -24,11 +25,41 @@ public class PlayerScript : MonoBehaviour
     private bool _isInvincible = false;
     private Renderer rend;
     private Color c;
+    private int score;
+    private int life;
+    
+    /*[SerializeField]
+    private TextAsset jsonFile;
+    
+    
+    public class  Player: IComparable
+    {
+        public string name;
+        public int score;
+
+        public int CompareTo(object obj)
+        {
+            Player otherPlayer = obj as Player;
+            return this.score.CompareTo(otherPlayer.score);
+        }
+    }
+
+    public Player currentPlayer = new Player();
+    public Player[] players;
+    
+
+    private void Awake()
+    {
+        currentPlayer.name = "sizas";
+        currentPlayer.score = 0;
+    }*/
 
     void Start()
     {
         rend = GetComponent<Renderer>();
         c = rend.material.color;
+        score = 0;
+        life = 1;
     }
 
     // Update is called once per frame
@@ -54,7 +85,6 @@ public class PlayerScript : MonoBehaviour
             else {
                 isjumping = false;
                 animations.Play("FallPJ");
-
             }
 
         }
@@ -66,8 +96,9 @@ public class PlayerScript : MonoBehaviour
         }
         
         _playerRigidBody.velocity = new Vector2(_moveSpeed, _playerRigidBody.velocity.y);
+        
 
-        //Debug.Log(touchingFloor);
+        //Debug.Log("The class one zuckas: " + currentPlayer.score);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -75,6 +106,13 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Coin1"))
         {
             Destroy(other.gameObject);
+            score += 1;
+        }
+        
+        if (other.gameObject.CompareTag("Coin2"))
+        {
+            Destroy(other.gameObject);
+            score += 5;
         }
 
         if(other.gameObject.CompareTag("PowerUp1")){
@@ -83,10 +121,12 @@ public class PlayerScript : MonoBehaviour
                 _isInvincible = true;
                 StartCoroutine("Invulnerable");
             }
-
         }
-
-        // Aqui iria la programación de la moneda cuando el personaje la toque.
+        
+        if(other.gameObject.CompareTag("PowerUp2")){
+            Destroy(other.gameObject);
+            life += 1;
+        }
         
     }
 
@@ -105,11 +145,20 @@ public class PlayerScript : MonoBehaviour
         touchingFloor = false;
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.layer == 3)
+        {
+            life -= 1;
+            Destroy(col.gameObject);
+            if (life == 0) Destroy(this.gameObject);
+            //Debug.Log(JsonUtility.ToJson(currentPlayer));
+        }
+    }
 
     IEnumerator Invulnerable(){
         Physics2D.IgnoreLayerCollision(3,6,true);
-        Debug.Log("Invencible");
+        //Debug.Log("Invencible");
         c.a = 0.5f;
         rend.material.color = c;
         _moveSpeed = 10;
@@ -118,8 +167,7 @@ public class PlayerScript : MonoBehaviour
         rend.material.color = c;
         _moveSpeed = 6;
         Physics2D.IgnoreLayerCollision(3,6,false);
-        Debug.Log("No Invencible");
-        _isInvincible = false;  
-
+        //Debug.Log("No Invencible");
+        _isInvincible = false;
     }
 }
