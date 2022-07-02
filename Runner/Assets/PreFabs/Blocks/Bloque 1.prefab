@@ -2953,6 +2953,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4779823510423273122}
   - component: {fileID: 3463450709160148351}
+  - component: {fileID: 6991995006456467608}
   m_Layer: 0
   m_Name: Bloque 1
   m_TagString: Floor
@@ -2998,6 +2999,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _size: 38
+--- !u!114 &6991995006456467608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4779823510423273125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03af0ffe3afb754fb1e4bd5722d8778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeTime: 10
 --- !u!1 &5439069014663722972
 GameObject:
   m_ObjectHideFlags: 0
