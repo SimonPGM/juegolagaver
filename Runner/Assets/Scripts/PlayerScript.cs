@@ -54,6 +54,15 @@ public class PlayerScript : MonoBehaviour
         currentPlayer.score = 0;
     }*/
 
+    [SerializeField]
+    private GameObject _chontaduro;
+    [SerializeField]
+    private GameObject _ehda;
+    [SerializeField]
+    private GameObject _eche;
+    [SerializeField]
+    private GameObject _death;
+
     void Start()
     {
         rend = GetComponent<Renderer>();
@@ -119,6 +128,8 @@ public class PlayerScript : MonoBehaviour
         if(other.gameObject.CompareTag("PowerUp1")){
             Destroy(other.gameObject);
             if (!_isInvincible){
+                Instantiate(_eche);
+                Instantiate(_chontaduro);
                 _isInvincible = true;
                 StartCoroutine("Invulnerable");
             }
