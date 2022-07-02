@@ -1,8 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -30,11 +35,14 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField]
     private GameObject _audioSource;
+    private AudioSource _audioMain;
 
-    /*[SerializeField]
+    [SerializeField]
     private TextAsset jsonFile;
-    
-    
+    [SerializeField]
+    private TMP_InputField _namePlayer;
+
+
     public class  Player: IComparable
     {
         public string name;
@@ -48,14 +56,19 @@ public class PlayerScript : MonoBehaviour
     }
 
     public Player currentPlayer = new Player();
-    public Player[] players;
-    
+    List<Player> players = new List<Player>();
+
+
 
     private void Awake()
     {
-        currentPlayer.name = "sizas";
+        currentPlayer.name = "";
         currentPlayer.score = 0;
-    }*/
+        JObject jo = JObject.Parse(jsonFile.text);
+        players = jo["Players"].ToObject<List<Player>>();
+    }
+
+
 
     [SerializeField]
     private GameObject _chontaduro;
@@ -65,7 +78,7 @@ public class PlayerScript : MonoBehaviour
     private GameObject _eche;
     [SerializeField]
     private GameObject _death;
-
+    private bool finish;
     void Start()
     {
         rend = GetComponent<Renderer>();
@@ -73,6 +86,9 @@ public class PlayerScript : MonoBehaviour
         score = 0;
         life = 1;
         animations.SetBool("isDead", false);
+        _audioMain = _audioSource.GetComponent<AudioSource>();
+        _namePlayer.gameObject.SetActive(false);
+        finish = false;
     }
 
     // Update is called once per frame
@@ -109,7 +125,23 @@ public class PlayerScript : MonoBehaviour
         }
         
         _playerRigidBody.velocity = new Vector2(_moveSpeed, _playerRigidBody.velocity.y);
-        
+
+        if (finish)
+        {
+            Debug.Log(_namePlayer.text);
+            if (_namePlayer.text != "" && Input.GetKeyDown(KeyCode.Return))
+            {
+                currentPlayer.name = _namePlayer.text;
+                players.Add(currentPlayer);
+                string jsonString = JsonConvert.SerializeObject(players);
+                jsonString = "{ \"Players\":" + jsonString + "}";
+                //Debug.Log(jsonString);
+                string path = Directory.GetCurrentDirectory();
+                Debug.Log("entra if");
+                File.WriteAllText(path + "/Assets/Scores.json", jsonString);
+                SceneManager.LoadScene("Menu");
+            }
+        }
 
         //Debug.Log("The class one zuckas: " + currentPlayer.score);
     }
@@ -119,22 +151,22 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Coin1"))
         {
             Destroy(other.gameObject);
-            score += 1;
+            currentPlayer.score += 1;
         }
         
         if (other.gameObject.CompareTag("Coin2"))
         {
             Destroy(other.gameObject);
-            score += 5;
+            currentPlayer.score += 5;
         }
 
         if(other.gameObject.CompareTag("PowerUp1")){
             Destroy(other.gameObject);
             if (!_isInvincible){
-                Instantiate(_eche);
-                Instantiate(_chontaduro);
                 _isInvincible = true;
                 StartCoroutine("Invulnerable");
+                Instantiate(_eche);
+                Instantiate(_chontaduro);
             }
         }
         
@@ -144,6 +176,7 @@ public class PlayerScript : MonoBehaviour
             Instantiate(_ehda);
         }
         
+
     }
 
     private void OnTriggerStay2D(Collider2D col)
@@ -171,6 +204,7 @@ public class PlayerScript : MonoBehaviour
             {
                 _moveSpeed = 0f;
                 StartCoroutine("DelayedDeath");
+
             }
             //Debug.Log(JsonUtility.ToJson(currentPlayer));
         }
@@ -182,7 +216,9 @@ public class PlayerScript : MonoBehaviour
         c.a = 0.5f;
         rend.material.color = c;
         _moveSpeed = 10;
+        _audioMain.mute = true;
         yield return new WaitForSeconds(10f);
+        _audioMain.mute = false;
         c.a = 1f;
         rend.material.color = c;
         _moveSpeed = 6;
@@ -194,15 +230,17 @@ public class PlayerScript : MonoBehaviour
     IEnumerator DelayedDeath()
     {
         //Debug.Log("Hero is dying");//Launch the animation and stuffs
-        _audioSource.GetComponent<AudioSource>().Stop();
+        _audioMain.Stop();
         Instantiate(_death);
         animations.SetBool("isDead", true);
         animations.Play("DeathPJ");
         yield return new WaitForSeconds(7f);//Delay for 5 seconds
         Destroy(this.gameObject);
-        SceneManager.LoadScene("Menu");
+        _namePlayer.gameObject.SetActive(true);
+        finish = true;
+        
         //Debug.Log("Hero is dead");//ProcessPlayerDeath
- 
+
     }
     
 }
