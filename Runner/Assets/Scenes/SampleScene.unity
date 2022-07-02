@@ -261,6 +261,10 @@ MonoBehaviour:
   _moveSpeed: 6
   jumptime: 0.6
   animations: {fileID: 109217707}
+  _chontaduro: {fileID: 6970349604974428333, guid: a087815027a2eeb4c80ef0b55dfe0cbd, type: 3}
+  _ehda: {fileID: 3755083040040760999, guid: f6719e6dd858a1a47948a6548899ac23, type: 3}
+  _eche: {fileID: 6933488260517649168, guid: 70a51d858517f8e4b8be4cc8243a5c2d, type: 3}
+  _death: {fileID: 8360642164349188287, guid: fe2c330d5c1f4cd4990eed337cb082f4, type: 3}
 --- !u!50 &109217703
 Rigidbody2D:
   serializedVersion: 4
@@ -462,7 +466,7 @@ AudioSource:
   m_GameObject: {fileID: 336842403}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -702575276004460502, guid: 6ae076fffcfae844f927b7e191dc9fcc, type: 2}
   m_audioClip: {fileID: 8300000, guid: faceef5f25c85224eac7da7e7a357858, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
